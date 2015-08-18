@@ -1,4 +1,4 @@
-mapApp
-======
+Map App
+=======
 
-Items on the map.
+Custom HTML items on the map.
