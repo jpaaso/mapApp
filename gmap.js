@@ -1,3 +1,14 @@
+var screen;
+function setScreenWidth () {
+	if (window.screen.width > 1000) {
+		screen = 'lg';
+	} else if (window.screen.width > 700) {
+		screen = 'md';
+	} else {
+		screen = 'sm';
+	}
+}
+
 function initialize() {
 	var mapCenter = new google.maps.LatLng(60.1733239, 24.9410248);
 	var mapOptions = { zoom: 14, center: mapCenter, disableDefaultUI: true };
@@ -10,6 +21,8 @@ function initialize() {
 	new CustomMarker(temppelinaukio, map, { marker_id: '1', rooms: '1', price: 100000 });
 	new CustomMarker(metroasema, map, { marker_id: '2', rooms: '2', price: 150000 });
 	new CustomMarker(kansallismuseo, map, { marker_id: '2', rooms: '5', price: 700000 });
+
+	setScreenWidth();
 }
 google.maps.event.addDomListener(window, 'load', initialize);
 
@@ -34,9 +47,6 @@ function setMarkerColor(div, price) {
 
 function setMarkerStyle(div, args) {
 	div.className = 'marker';	
-	div.style.position = 'absolute';
-	div.style.cursor = 'pointer';
-	div.style.padding = '2px 4px';
 	div.innerHTML = args.rooms;
 	setMarkerColor(div, args.price);
 }
